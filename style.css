@@ -4,7 +4,8 @@ h1 {
 }
 #quiz-container {
     border: black 2px solid;
-    width: 40%;
+    width: 300px;
+    height: 300px;
     margin: 0 auto;
     background-color: aliceblue;
 }
@@ -13,19 +14,20 @@ h2{
     text-align: center;
 }
 
-#ques-container button {
+.questions {
     display: block;
     margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
     width: 90%;
     text-align: start;
-    border-radius: 10px;
+    border-width: 2px;
 }
 
 #btn-start{
     margin-top: 25px;
-    margin-left: 35%;
     margin-bottom: 10px;
-    width: 60px;
-    border-radius: 10px;
+    width: 150px;
+    height: 30px;
+    margin-left: 70px;
+    border-width: 2px;
 }

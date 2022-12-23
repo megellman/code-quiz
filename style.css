@@ -1,0 +1,31 @@
+h1 {
+    text-align: center;
+    margin-bottom: 100px;
+}
+#quiz-container {
+    border: black 2px solid;
+    width: 40%;
+    margin: 0 auto;
+    background-color: aliceblue;
+}
+
+h2{
+    text-align: center;
+}
+
+#ques-container button {
+    display: block;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 90%;
+    text-align: start;
+    border-radius: 10px;
+}
+
+#btn-start{
+    margin-top: 25px;
+    margin-left: 35%;
+    margin-bottom: 10px;
+    width: 60px;
+    border-radius: 10px;
+}

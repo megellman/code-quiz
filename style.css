@@ -31,3 +31,15 @@ h2{
     margin-left: 70px;
     border-width: 2px;
 }
+
+#prev{
+    width: 80px;
+    margin: 50px 10px 10px 10px;
+    display: none;
+}
+
+#next{
+    width: 80px;
+    margin: 50px 10px 10px 106px;
+    display: none;
+}

@@ -1,0 +1,65 @@
+body{
+    background-image: url(/assets/clouds.jpg);
+    color: rgb(63, 56, 56);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 100px;
+    color: white;
+    font-size: 70px;
+}
+
+#quiz-container {
+    border: rgb(77, 6, 25) 2px solid;
+    width: 400px;
+    height: 400px;
+    margin: 10px auto;
+    background-color: rgba(232, 217, 221);
+}
+
+#ques-one{
+    margin-top: 40px;
+}
+
+h2{
+    text-align: center;
+}
+
+.questions {
+    display: block;
+    margin-left: 70px;
+    margin-top: 10px;
+    width: 60%;
+    text-align: start;
+    border-width: 2px;
+}
+
+#btn-start{
+    width: 160px;
+    height: 40px;
+    margin-left: 123px;
+    margin-top: -100px;
+    border-width: 2px;
+    font-size: larger;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 120px;
+}
+
+#next,
+#prev {
+    width: 70px;
+    height: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: none;
+}
+
+button{
+    border-color: #4D0619;
+    background-color: white;
+}

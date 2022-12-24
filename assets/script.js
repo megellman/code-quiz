@@ -9,6 +9,7 @@ var prev = document.querySelector("#prev");
 var next = document.querySelector("#next");
 var quesNum = document.querySelector("#ques-num");
 var roundCounter = 0;
+var finalScore = 0;
 
 // Begin Game 
 quizStart.addEventListener("click", roundOne);

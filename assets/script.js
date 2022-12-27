@@ -2,10 +2,10 @@ var container = document.querySelector("#quiz-container");
 var btns = document.querySelectorAll(".questions");
 var question = document.querySelector("#questions");
 var quizStart = document.querySelector("#btn-start");
-var quesOne = document.querySelector("#ques-one");
-var quesTwo = document.querySelector("#ques-two");
-var quesThree = document.querySelector("#ques-three");
-var quesFour = document.querySelector("#ques-four");
+var btnOne = document.querySelector("#btn-one");
+var btnTwo = document.querySelector("#btn-two");
+var btnThree = document.querySelector("#btn-three");
+var btnFour = document.querySelector("#btn-four");
 var quesNum = document.querySelector("#ques-num");
 var answerMessage = document.querySelector("#answer-message");
 var correctMessage = document.querySelector("#correct");
@@ -16,6 +16,7 @@ var roundCounter = 0;
 var finalScore = 0;
 var time = 60;
 
+// Countdown timer
 function countDown(){
     var timer = setInterval(function(){
         document.querySelector("#timer").innerHTML = time;
@@ -30,7 +31,7 @@ function countDown(){
     }, 1000);
 }
 
-quesOne.onclick = function(){
+btnOne.onclick = function(){
     if(this.textContent === "1. function myFunction()"){
         rightAnswer();
         setTimeout(cancelMessage, 1000);
@@ -43,7 +44,7 @@ quesOne.onclick = function(){
     }
 }
 
-quesTwo.onclick = function(){
+btnTwo.onclick = function(){
     if(this.textContent === "correct answer"){
         finalScore++;
         setTimeout(nextRound, 1000);
@@ -54,7 +55,7 @@ quesTwo.onclick = function(){
     }
 }
 
-quesThree.onclick = function(){
+btnThree.onclick = function(){
     if(this.textContent === "3. If a is true, log 'Hello World' to the console" || this.textContent === "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value"){
         rightAnswer();
         setTimeout(cancelMessage, 1000);
@@ -67,7 +68,7 @@ quesThree.onclick = function(){
     }
 }
 
-quesFour.onclick = function(){
+btnFour.onclick = function(){
     if(this.textContent === "4. <script></script>"){
         rightAnswer();
         setTimeout(cancelMessage, 1000);
@@ -80,8 +81,6 @@ quesFour.onclick = function(){
     }
 }
 
-
-
 // Begin Game 
 quizStart.addEventListener("click", roundOne);
 
@@ -90,10 +89,10 @@ function roundOne(){
     for(var i = 0; i < btns.length; i++){
         btns[i].style.visibility = "visible";
     }
-    quesOne.textContent = "1. function myFunction()";
-    quesTwo.textContent = "2. myFunction";
-    quesThree.textContent = "3. myFunction()";
-    quesFour.textContent = "4. function myFunction";
+    btnOne.textContent = "1. function myFunction()";
+    btnTwo.textContent = "2. myFunction";
+    btnThree.textContent = "3. myFunction()";
+    btnFour.textContent = "4. function myFunction";
     quizStart.style.display = "none";
     quesNum.style.visibility = "visible";
     quesNum.textContent = "Question #1";
@@ -104,30 +103,30 @@ function roundOne(){
 }
 
 function roundTwo(){
-    quesOne.textContent = "1. <link></link>";
-    quesTwo.textContent = "2. <a/>";
-    quesThree.textContent = "3. <script/>";
-    quesFour.textContent = "4. <script></script>";
+    btnOne.textContent = "1. <link></link>";
+    btnTwo.textContent = "2. <a/>";
+    btnThree.textContent = "3. <script/>";
+    btnFour.textContent = "4. <script></script>";
     quesNum.textContent = "Question #2";
     question.textContent = "How do you insert JavaScript code in an HTML file?"
     roundCounter++;
 }
 
 function roundThree(){
-    quesOne.textContent = "1. If a is selected, log 'Hello World' to the console";
-    quesTwo.textContent = "2. If a is passed, run this function";
-    quesThree.textContent = "3. If a is true, log 'Hello World' to the console";
-    quesFour.textContent = "4. If a is found in the HTML file, log 'Hello World' to the console";
+    btnOne.textContent = "1. If a is selected, log 'Hello World' to the console";
+    btnTwo.textContent = "2. If a is passed, run this function";
+    btnThree.textContent = "3. If a is true, log 'Hello World' to the console";
+    btnFour.textContent = "4. If a is found in the HTML file, log 'Hello World' to the console";
     quesNum.textContent = "Question #3";
-    question.textContent = "Describe the function of this code: if(a){\nconsole.log('Hello World')";
+    question.textContent = "Describe the function of this code:\n if(a){\nconsole.log('Hello World')";
     roundCounter++;
 }
 
 function roundFour(){
-    quesOne.textContent = "1. == is truthy and === is not";
-    quesTwo.textContent = "2. == asigns a value and === declares that two values are equal";
-    quesThree.textContent = "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value";
-    quesFour.textContent = "4. === declares that two values are equal and == declares that two values are the same primitive type and equal value";
+    btnOne.textContent = "1. == is truthy and === is not";
+    btnTwo.textContent = "2. == asigns a value and === declares that two values are equal";
+    btnThree.textContent = "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value";
+    btnFour.textContent = "4. === declares that two values are equal and == declares that two values are the same primitive type and equal value";
     quesNum.textContent = "Question #4";
     question.textContent = "What is the difference between == and ===?"
     roundCounter++;

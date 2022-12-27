@@ -9,19 +9,24 @@
 </head>
 <body>
     <h1>Code Quiz</h1>
+    <h2 id="timer">0</h2>
     <div id="quiz-container">
-        <h2 id="ques-num" style="visibility: hidden;">h</h2>
-        <div id="ques-container">
-            <button class="questions" id="ques-one" style="visibility: hidden;">1. Sample</button>
-            <button class="questions" id="ques-two" style="visibility: hidden;">2. Sample </button>
-            <button class="questions" id="ques-three" style="visibility: hidden;">3. Sample</button>
-            <button class="questions" id="ques-four" style="visibility: hidden;">4. Sample</button>
-        </div>
-        <button id="btn-start">Begin</button>
-        <section class="button-container">
-            <button id="prev">Previous</button>
-            <button id="next">Next</button>
+        <h2 id="ques-num" style="visibility: hidden;">holder</h2>
+        <h3 id="questions" style="visibility: hidden;">holder</h3>
+        <section id="answer-message" style="display: none;">
+            <h2 id="correct" style="display: none;">Correct!</h2>
+            <h2 id="wrong" style="display: none;">Wrong!</h2>
         </section>
+        <section id="final-score" style="display: none;">
+            <h2 id="score-percentage">Your Score:</h2>
+        </section>
+        <section id="ques-container">
+            <button class="questions" id="ques-one" style="visibility: hidden;">Sample</button>
+            <button class="questions" id="ques-two" style="visibility: hidden;">Sample </button>
+            <button class="questions" id="ques-three" style="visibility: hidden;">Sample</button>
+            <button class="questions" id="ques-four" style="visibility: hidden;">Sample</button>
+        </section>
+        <button id="btn-start">Begin</button>
     </div>
     <script src="assets/script.js"></script>
 </body>

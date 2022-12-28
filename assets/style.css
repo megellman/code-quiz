@@ -1,6 +1,12 @@
+:root{
+    --dark: rgb(77, 6, 25);
+    --light: rgb(232, 217, 221);
+
+}
+
 body{
     background-image: url(/assets/clouds.jpg);
-    color: rgb(63, 56, 56);
+    color: var(--dark);
 }
 
 h1 {
@@ -19,7 +25,7 @@ h1 {
 }
 
 #quiz-container {
-    border: rgb(77, 6, 25) 2px solid;
+    border: var(--dark) 2px solid;
     width: 400px;
     height: 400px;
     position: absolute;
@@ -27,12 +33,12 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: rgba(232, 217, 221);
+    background-color: var(--light);
 }
 
 #answer-message,
 #final-score{
-    border: rgb(77, 6, 25) 2px solid;
+    border: --dark 2px solid;
     width: 400px;
     height: 400px;
     position: absolute;
@@ -40,7 +46,7 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: rgba(232, 217, 221);
+    background-color: var(--light);
     z-index: 1;
 }
 
@@ -74,11 +80,11 @@ h2{
 
 #btn-start{
     width: 160px;
-    height: 40px;
+    height: 70px;
     border-width: 2px;
-    font-size: larger;
+    font-size: 3em;
     position: absolute;
-    top: 47%;
+    top: 40%;
     right: 29%;
 }
 
@@ -113,13 +119,13 @@ wrong {
 
 
 button{
-    border-color: #4D0619;
+    border-color: var(--dark);
     background-color: white;
 }
 
 button:active{
     border-width: 2px;
-    box-shadow: -2px 2px 8px #4D0619;
+    box-shadow: -2px 2px 8px var(--dark);
 }
 
 h3 {

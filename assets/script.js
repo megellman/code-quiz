@@ -38,6 +38,7 @@ btnOne.onclick = function(){
         finalScore++;
         setTimeout(nextRound, 1000);
     } else{
+        time--;
         wrongAnswer();
         setTimeout(cancelMessage, 1000);
         setTimeout(nextRound, 1000);
@@ -49,6 +50,7 @@ btnTwo.onclick = function(){
         finalScore++;
         setTimeout(nextRound, 1000);
     } else{
+        time--;
         wrongAnswer();
         setTimeout(cancelMessage, 1000);
         setTimeout(nextRound, 1000);
@@ -62,6 +64,7 @@ btnThree.onclick = function(){
         finalScore++;
         setTimeout(nextRound, 1000);
     } else{
+        time--;
         wrongAnswer();
         setTimeout(cancelMessage, 1000);
         setTimeout(nextRound, 1000);
@@ -75,6 +78,7 @@ btnFour.onclick = function(){
         finalScore++;
         setTimeout(nextRound, 1000);
     } else{
+        time--;
         wrongAnswer();
         setTimeout(cancelMessage, 1000);
         setTimeout(nextRound, 1000);

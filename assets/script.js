@@ -15,6 +15,15 @@ var scorePercentage = document.querySelector("#score-percentage");
 var roundCounter = 0;
 var finalScore = 0;
 var time = 60;
+var answers = {
+questionOne: "1. function myFunction()", 
+questionsTwo: "3. If a is true, log 'Hello World' to the console", 
+questionThree: "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value", 
+questionFour: "4. <script></script>"
+};
+
+// Begin Game 
+quizStart.addEventListener("click", roundOne);
 
 // Countdown timer
 function countDown(){
@@ -31,64 +40,47 @@ function countDown(){
     }, 1000);
 }
 
-btnOne.onclick = function(){
-    if(this.textContent === "1. function myFunction()"){
+function findAnswer(){
+    if(answers){
         rightAnswer();
-        setTimeout(cancelMessage, 1000);
-        finalScore++;
-        setTimeout(nextRound, 1000);
     } else{
-        time--;
         wrongAnswer();
-        setTimeout(cancelMessage, 1000);
-        setTimeout(nextRound, 1000);
     }
 }
 
+btnOne.onclick = findAnswer();
+// function(){
+//     if(this.textContent === "1. function myFunction()"){
+//         rightAnswer();      
+//     } else{       
+//         wrongAnswer();
+//     }
+// }
+
 btnTwo.onclick = function(){
     if(this.textContent === "correct answer"){
-        finalScore++;
-        setTimeout(nextRound, 1000);
-    } else{
-        time--;
+        rightAnswer();
+    } else{ 
         wrongAnswer();
-        setTimeout(cancelMessage, 1000);
-        setTimeout(nextRound, 1000);
     }
 }
 
 btnThree.onclick = function(){
     if(this.textContent === "3. If a is true, log 'Hello World' to the console" || this.textContent === "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value"){
         rightAnswer();
-        setTimeout(cancelMessage, 1000);
-        finalScore++;
-        setTimeout(nextRound, 1000);
     } else{
-        time--;
-        wrongAnswer();
-        setTimeout(cancelMessage, 1000);
-        setTimeout(nextRound, 1000);
+        wrongAnswer();  
     }
 }
 
 btnFour.onclick = function(){
     if(this.textContent === "4. <script></script>"){
         rightAnswer();
-        setTimeout(cancelMessage, 1000);
-        finalScore++;
-        setTimeout(nextRound, 1000);
     } else{
-        time--;
         wrongAnswer();
-        setTimeout(cancelMessage, 1000);
-        setTimeout(nextRound, 1000);
     }
 }
 
-// Begin Game 
-quizStart.addEventListener("click", roundOne);
-
-// 
 function roundOne(){
     for(var i = 0; i < btns.length; i++){
         btns[i].style.visibility = "visible";
@@ -153,12 +145,18 @@ function nextRound(){
 function rightAnswer(){
     answerMessage.style.display = "block";
     correctMessage.style.display = "block";
+    setTimeout(cancelMessage, 1000);
+    finalScore++;
+    setTimeout(nextRound, 1000);
 }
 
 //Wrong
 function wrongAnswer(){
     answerMessage.style.display = "block";
     wrongMessage.style.display = "block";
+    setTimeout(cancelMessage, 1000);
+    setTimeout(nextRound, 1000);
+    time--;
 }
 
 function cancelMessage(){
@@ -174,3 +172,13 @@ function calculateScore(){
     var scoreTotal = (finalScore / 4) * 100;
     scorePercentage.textContent = "Your Score: " + scoreTotal + "%";
 }
+
+function getHighScore() {
+    var scoreBoard = document.querySelector("#score-board");
+    var name = document.getElementById("initials").value;
+    var entry = document.createElement("li");
+    entry.appendChild(document.createTextNode(name));
+    scoreBoard.appendChild(entry);
+    document.getElementById("score-info").style.display = "block";
+}
+

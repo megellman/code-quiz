@@ -1,5 +1,5 @@
 var container = document.querySelector("#quiz-container");
-var btns = document.querySelectorAll(".questions");
+var btns = document.getElementsByClassName("questions");
 var question = document.querySelector("#questions");
 var quizStart = document.querySelector("#btn-start");
 var btnOne = document.querySelector("#btn-one");
@@ -15,103 +15,116 @@ var scorePercentage = document.querySelector("#score-percentage");
 var roundCounter = 0;
 var finalScore = 0;
 var time = 3;
+var answerKey = [];
 
 
 // Begin Game 
 quizStart.addEventListener("click", roundOne);
 
-// Countdown timer
-function countDown(){
-    var timer = setInterval(function(){
-        document.querySelector("#timer").innerHTML = time;
-        time--;
-        if(time < 0){
-            clearInterval(timer);
-            calculateScore()
-        } else if(roundCounter === 5){
-            clearInterval(timer);
-            document.querySelector("#timer").innerHTML = 0;
-        }
-    }, 1000);
-}
+// // Countdown timer
+// function countDown(){
+//     var timer = setInterval(function(){
+//         document.querySelector("#timer").innerHTML = time;
+//         time--;
+//         if(time < 0){
+//             clearInterval(timer);
+//             calculateScore()
+//         } else if(roundCounter === 5){
+//             clearInterval(timer);
+//             document.querySelector("#timer").innerHTML = 0;
+//         }
+//     }, 1000);
+// }
 
-btnOne.onclick = function(){
-    if(this.textContent === "1. function myFunction()"){
-        rightAnswer();      
-    } else{       
-        wrongAnswer();
-    }
-}
+// btnOne.onclick = function(){
+//     if(this.textContent === "1. function myFunction()"){
+//         rightAnswer();      
+//     } else{       
+//         wrongAnswer();
+//     }
+// }
 
-btnTwo.onclick = function(){
-    if(this.textContent === "correct answer"){
-        rightAnswer();
-    } else{ 
-        wrongAnswer();
-    }
-}
+// btnTwo.onclick = function(){
+//     if(this.textContent === "correct answer"){
+//         rightAnswer();
+//     } else{ 
+//         wrongAnswer();
+//     }
+// }
 
-btnThree.onclick = function(){
-    if(this.textContent === "3. If a is true, log 'Hello World' to the console" || this.textContent === "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value"){
-        rightAnswer();
-    } else{
-        wrongAnswer();  
-    }
-}
+// btnThree.onclick = function(){
+//     if(this.textContent === "3. If a is true, log 'Hello World' to the console" || this.textContent === "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value"){
+//         rightAnswer();
+//     } else{
+//         wrongAnswer();  
+//     }
+// }
 
-btnFour.onclick = function(){
-    if(this.textContent === "4. <script></script>"){
-        rightAnswer();
-    } else{
-        wrongAnswer();
-    }
-}
+// btnFour.onclick = function(){
+//     if(this.textContent === "4. <script></script>"){
+//         rightAnswer();
+//     } else{
+//         wrongAnswer();
+//     }
+// }
 
+var quesOne = ["1. function myFunction()", "2. myFunction", "3. myFunction()", "4. function myFunction"]
+answerKey.push(quesOne[0]);
 function roundOne(){
     for(var i = 0; i < btns.length; i++){
         btns[i].style.visibility = "visible";
+        btns[i].textContent = quesOne[i];
     }
-    btnOne.textContent = "1. function myFunction()";
-    btnTwo.textContent = "2. myFunction";
-    btnThree.textContent = "3. myFunction()";
-    btnFour.textContent = "4. function myFunction";
     quizStart.style.display = "none";
     quesNum.style.visibility = "visible";
     quesNum.textContent = "Question #1";
     question.style.visibility = "visible";
     question.textContent = "How do you declare a function?";
     roundCounter++;
-    countDown();
+    // countDown();
 }
 
+var quesTwo = ["1. <link></link>", "2. <a/>", "3. <script/>", "4. <script></script>"]
+answerKey.push(quesTwo[3]);
 function roundTwo(){
-    btnOne.textContent = "1. <link></link>";
-    btnTwo.textContent = "2. <a/>";
-    btnThree.textContent = "3. <script/>";
-    btnFour.textContent = "4. <script></script>";
+    for(var i = 0; i < btns.length; i++){
+        btns[i].textContent = quesTwo[i];
+    }
     quesNum.textContent = "Question #2";
     question.textContent = "How do you insert JavaScript code in an HTML file?"
     roundCounter++;
 }
 
+var quesThree = ["1. If a is selected, log 'Hello World' to the console", "2. If a is passed, run this function", "3. If a is true, log 'Hello World' to the console", "4. If a is found in the HTML file, log 'Hello World' to the console"]
+answerKey.push(quesThree[2]);
 function roundThree(){
-    btnOne.textContent = "1. If a is selected, log 'Hello World' to the console";
-    btnTwo.textContent = "2. If a is passed, run this function";
-    btnThree.textContent = "3. If a is true, log 'Hello World' to the console";
-    btnFour.textContent = "4. If a is found in the HTML file, log 'Hello World' to the console";
+    for(var i = 0; i < btns.length; i++){
+        btns[i].textContent = quesThree[i];
+    }
     quesNum.textContent = "Question #3";
     question.textContent = "Describe the function of this code:\n if(a){\nconsole.log('Hello World')";
     roundCounter++;
 }
 
+var quesFour = ["1. == is truthy and === is not", "2. == asigns a value and === declares that two values are equal", "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value", "4. === declares that two values are equal and == declares that two values are the same primitive type and equal value"]
+answerKey.push(quesFour[2]);
 function roundFour(){
-    btnOne.textContent = "1. == is truthy and === is not";
-    btnTwo.textContent = "2. == asigns a value and === declares that two values are equal";
-    btnThree.textContent = "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value";
-    btnFour.textContent = "4. === declares that two values are equal and == declares that two values are the same primitive type and equal value";
+    for(var i = 0; i < btns.length; i++){
+        btns.textContent = quesFour[i];
+    }
     quesNum.textContent = "Question #4";
     question.textContent = "What is the difference between == and ===?"
     roundCounter++;
+}
+
+// If the content of the button clicked has text content that matches one of these array
+// items, run rightAnswer function. If not, run wrongAnswer function
+function checkAnswer(e){
+    if(answerKey.includes(btns[e].textContent)){
+        rightAnswer();
+    } else {
+        wrongAnswer();
+    }
 }
 
 // Next Round 
@@ -167,4 +180,3 @@ function getHighScore() {
     scoreBoard.appendChild(entry);
     document.getElementById("score-info").style.display = "block";
 }
-

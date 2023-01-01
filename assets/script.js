@@ -2,10 +2,6 @@ var container = document.querySelector("#quiz-container");
 var btns = document.getElementsByClassName("questions");
 var question = document.querySelector("#questions");
 var quizStart = document.querySelector("#btn-start");
-var btnOne = document.querySelector("#btn-one");
-var btnTwo = document.querySelector("#btn-two");
-var btnThree = document.querySelector("#btn-three");
-var btnFour = document.querySelector("#btn-four");
 var quesNum = document.querySelector("#ques-num");
 var answerMessage = document.querySelector("#answer-message");
 var correctMessage = document.querySelector("#correct");
@@ -21,52 +17,20 @@ var answerKey = [];
 // Begin Game 
 quizStart.addEventListener("click", roundOne);
 
-// // Countdown timer
-// function countDown(){
-//     var timer = setInterval(function(){
-//         document.querySelector("#timer").innerHTML = time;
-//         time--;
-//         if(time < 0){
-//             clearInterval(timer);
-//             calculateScore()
-//         } else if(roundCounter === 5){
-//             clearInterval(timer);
-//             document.querySelector("#timer").innerHTML = 0;
-//         }
-//     }, 1000);
-// }
-
-// btnOne.onclick = function(){
-//     if(this.textContent === "1. function myFunction()"){
-//         rightAnswer();      
-//     } else{       
-//         wrongAnswer();
-//     }
-// }
-
-// btnTwo.onclick = function(){
-//     if(this.textContent === "correct answer"){
-//         rightAnswer();
-//     } else{ 
-//         wrongAnswer();
-//     }
-// }
-
-// btnThree.onclick = function(){
-//     if(this.textContent === "3. If a is true, log 'Hello World' to the console" || this.textContent === "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value"){
-//         rightAnswer();
-//     } else{
-//         wrongAnswer();  
-//     }
-// }
-
-// btnFour.onclick = function(){
-//     if(this.textContent === "4. <script></script>"){
-//         rightAnswer();
-//     } else{
-//         wrongAnswer();
-//     }
-// }
+// Countdown timer
+function countDown(){
+    var timer = setInterval(function(){
+        document.querySelector("#timer").innerHTML = time;
+        time--;
+        if(time < 0){
+            clearInterval(timer);
+            calculateScore()
+        } else if(roundCounter === 5){
+            clearInterval(timer);
+            document.querySelector("#timer").innerHTML = 0;
+        }
+    }, 1000);
+}
 
 var quesOne = ["1. function myFunction()", "2. myFunction", "3. myFunction()", "4. function myFunction"]
 answerKey.push(quesOne[0]);
@@ -81,7 +45,7 @@ function roundOne(){
     question.style.visibility = "visible";
     question.textContent = "How do you declare a function?";
     roundCounter++;
-    // countDown();
+    countDown();
 }
 
 var quesTwo = ["1. <link></link>", "2. <a/>", "3. <script/>", "4. <script></script>"]

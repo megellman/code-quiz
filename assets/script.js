@@ -1,5 +1,5 @@
 var container = document.querySelector("#quiz-container");
-var buttons = document.querySelectorAll(".questions");
+var btns = document.querySelectorAll(".questions");
 var question = document.querySelector("#questions");
 var quizStart = document.querySelector("#btn-start");
 var btnOne = document.querySelector("#btn-one");
@@ -14,33 +14,8 @@ var finalScoreMessage = document.querySelector("#final-score");
 var scorePercentage = document.querySelector("#score-percentage");
 var roundCounter = 0;
 var finalScore = 0;
-var time = 60;
-var answers = {
-    questionOne: {
-        one: "1. function myFunction()", 
-        two: "3. If a is true, log 'Hello World' to the console", 
-        three: "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value", 
-        four: "4. <script></script>"
-    }
-    questionTwo: {
-        one: "1. <link></link>",
-        two: "2. <a/>",
-        three: "3. <script/>",
-        four: "4. <script></script>"
-    }
-    questionThree: {
-        one: "1. If a is selected, log 'Hello World' to the console",
-        two: "2. If a is passed, run this function",
-        three: "3. If a is true, log 'Hello World' to the console",
-        four: "4. If a is found in the HTML file, log 'Hello World' to the console"
-    }
-    questionFour: {
-        one: "1. == is truthy and === is not",
-        two: "2. == asigns a value and === declares that two values are equal",
-        three: "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value",
-        four: "4. === declares that two values are equal and == declares that two values are the same primitive type and equal value"
-    }
-};
+var time = 3;
+
 
 // Begin Game 
 quizStart.addEventListener("click", roundOne);
@@ -60,52 +35,43 @@ function countDown(){
     }, 1000);
 }
 
-function findAnswer(){
-    if(this.textContent === answers){
+btnOne.onclick = function(){
+    if(this.textContent === "1. function myFunction()"){
+        rightAnswer();      
+    } else{       
+        wrongAnswer();
+    }
+}
+
+btnTwo.onclick = function(){
+    if(this.textContent === "correct answer"){
+        rightAnswer();
+    } else{ 
+        wrongAnswer();
+    }
+}
+
+btnThree.onclick = function(){
+    if(this.textContent === "3. If a is true, log 'Hello World' to the console" || this.textContent === "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value"){
+        rightAnswer();
+    } else{
+        wrongAnswer();  
+    }
+}
+
+btnFour.onclick = function(){
+    if(this.textContent === "4. <script></script>"){
         rightAnswer();
     } else{
         wrongAnswer();
     }
 }
 
-buttons.onclick = findAnswer();
-// function(){
-//     if(this.textContent === "1. function myFunction()"){
-//         rightAnswer();      
-//     } else{       
-//         wrongAnswer();
-//     }
-// }
-
-// btnTwo.onclick = function(){
-//     if(this.textContent === "correct answer"){
-//         rightAnswer();
-//     } else{ 
-//         wrongAnswer();
-//     }
-// }
-
-// btnThree.onclick = function(){
-//     if(this.textContent === "3. If a is true, log 'Hello World' to the console" || this.textContent === "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value"){
-//         rightAnswer();
-//     } else{
-//         wrongAnswer();  
-//     }
-// }
-
-// btnFour.onclick = function(){
-//     if(this.textContent === "4. <script></script>"){
-//         rightAnswer();
-//     } else{
-//         wrongAnswer();
-//     }
-// }
-
 function roundOne(){
-    for(var i = 0; i < buttons.length; i++){
-        buttons[i].style.visibility = "visible";
+    for(var i = 0; i < btns.length; i++){
+        btns[i].style.visibility = "visible";
     }
-    btnOne.textContent = answers.questionOne;
+    btnOne.textContent = "1. function myFunction()";
     btnTwo.textContent = "2. myFunction";
     btnThree.textContent = "3. myFunction()";
     btnFour.textContent = "4. function myFunction";

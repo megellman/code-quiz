@@ -9,6 +9,7 @@ var wrongMessage = document.querySelector("#wrong");
 var finalScoreMessage = document.querySelector("#final-score");
 var scorePercentage = document.querySelector("#score-percentage");
 var scoreBoard = document.querySelector("#score-board");
+var scoreInfo = document.querySelector("#score-info");
 var roundCounter = 0;
 var finalScore = 0;
 var time = 30;
@@ -142,15 +143,16 @@ function calculateScore(){
 function getHighScore(form) {
     finalScoreMessage.style.display = "none";
     var entry = document.createElement("p");
-    var name = `${scoreTotal}   ${form.initials.value}` ;
+    var name = `${scoreTotal}    -   ${form.initials.value}` ;
     entry.appendChild(document.createTextNode(name));
-    scoreBoard.appendChild(entry);
-    document.getElementById("score-info").style.display = "block";
+    scoreInfo.appendChild(entry);
+    scoreBoard.after(entry);
+    scoreInfo.style.display = "block";
     form.reset();
 }
 
 function playAgain(){
-    document.getElementById("score-info").style.display = "none";
+    scoreInfo.style.display = "none";
     time = 30;
     roundCounter = 0;
     finalScore = 0;

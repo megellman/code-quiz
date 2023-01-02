@@ -160,9 +160,9 @@ function playAgain(){
 }
 
 function clearScore(){
-    var first = scoreBoard.firstElementChild;
+    var first = scoreInfo.firstElementChild;
     while (first) {
         first.remove();
-        first = scoreBoard.firstElementChild;
+        first = scoreInfo.firstElementChild;
     }
 }

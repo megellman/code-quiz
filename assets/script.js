@@ -8,9 +8,10 @@ var correctMessage = document.querySelector("#correct");
 var wrongMessage = document.querySelector("#wrong");
 var finalScoreMessage = document.querySelector("#final-score");
 var scorePercentage = document.querySelector("#score-percentage");
+var scoreBoard = document.querySelector("#score-board");
 var roundCounter = 0;
 var finalScore = 0;
-var time = 3;
+var time = 30;
 var answerKey = [];
 
 
@@ -128,19 +129,38 @@ function cancelMessage(){
     correctMessage.style.display = "none";
 }
 
+var scoreTotal;
+
 // Final Score
 function calculateScore(){
     roundCounter++;
     finalScoreMessage.style.display = "block";
-    var scoreTotal = (finalScore / 4) * 100;
+    scoreTotal = (finalScore / 4) * 100;
     scorePercentage.textContent = "Your Score: " + scoreTotal + "%";
 }
 
-function getHighScore() {
-    var scoreBoard = document.querySelector("#score-board");
-    var name = document.getElementById("initials").value;
-    var entry = document.createElement("li");
+function getHighScore(form) {
+    finalScoreMessage.style.display = "none";
+    var entry = document.createElement("p");
+    var name = `${scoreTotal}   ${form.initials.value}` ;
     entry.appendChild(document.createTextNode(name));
     scoreBoard.appendChild(entry);
     document.getElementById("score-info").style.display = "block";
+    form.reset();
+}
+
+function playAgain(){
+    document.getElementById("score-info").style.display = "none";
+    time = 30;
+    roundCounter = 0;
+    finalScore = 0;
+    roundOne();
+}
+
+function clearScore(){
+    var first = scoreBoard.firstElementChild;
+    while (first) {
+        first.remove();
+        first = scoreBoard.firstElementChild;
+    }
 }

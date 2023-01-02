@@ -1,5 +1,6 @@
 :root{
     --dark: rgb(77, 6, 25);
+    --medium: rgb(215, 171, 183);
     --light: rgb(232, 217, 221);
 
 }
@@ -106,28 +107,6 @@ wrong {
     right: 29%;
 }
 
-#next,
-#prev {
-    width: 70px;
-    height: 40px;
-    margin-left: 40px;
-    margin-right: 40px;
-    display: none;
-}
-
-#next{
-    position: absolute;
-    bottom: 20px;
-    right: -20px;
-}
-
-#prev{
-    position: absolute;
-    bottom: 20px;
-    left: -20px;
-}
-
-
 button{
     border-color: var(--dark);
     background-color: white;
@@ -148,11 +127,26 @@ h3 {
 
 #play-again,
 #clear-score{
+    position: absolute;
     display: inline;
-    margin-left: 15px;
+    bottom: 5%;
+    background-color: var(--medium);
+    height: 10%;
+    width: 20%;
+}
+
+#play-again{
+    left: 10%;
+}
+
+#clear-score{
+    right: 10%;
 }
 
 #reset-quiz {
     font-size: 1.5em;
-    margin-top: 180px;
+    position: absolute;
+    bottom: 17%;
+    left: 36%;
 }
+

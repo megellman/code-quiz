@@ -19,17 +19,17 @@
         </section>
         <section id="final-score" style="display: none;">
             <h2 id="score-percentage">Your Score:</h2>
-            <form id="highscore">
+            <form name="highscore" action="" method="get">
                 <label for="initials">Initials:</label>
-                <input type="text" id="initials" placeholder="Enter your initials here">
-                <button type="submit" onclick="getHighScore() ">Submit</button>
+                <input type="text" name="initials" value="" placeholder="Enter your initials here">
+                <input type="button" name="submit" value="submit" onclick="getHighScore(this.form)">
             </form>
         </section>
         <section id="score-info" style="display: none;">
-            <ul id="score-board">High Scores:</ul>
+            <h3 id="score-board">High Scores:</h3>
             <h3 id="reset-quiz">Play Again?</h3>
-            <button id="play-again">OK</button>
-            <button id="clear-score">Clear Score</button>
+            <button id="play-again" onclick="playAgain()">OK</button>
+            <button id="clear-score" onclick="clearScore()">Clear Score</button>
         </section>
         <section id="ques-container">
             <button onclick="checkAnswer(0)" class="questions" style="visibility: hidden;">Sample</button>

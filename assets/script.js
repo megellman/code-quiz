@@ -130,9 +130,8 @@ function cancelMessage(){
     correctMessage.style.display = "none";
 }
 
-var scoreTotal;
-
 // Final Score
+var scoreTotal;
 function calculateScore(){
     roundCounter++;
     finalScoreMessage.style.display = "block";
@@ -140,13 +139,13 @@ function calculateScore(){
     scorePercentage.textContent = "Your Score: " + scoreTotal + "%";
 }
 
+var scoreContainer = document.getElementById("score-container");
 function getHighScore(form) {
     finalScoreMessage.style.display = "none";
     var entry = document.createElement("p");
     var name = `${scoreTotal}    -   ${form.initials.value}` ;
     entry.appendChild(document.createTextNode(name));
-    scoreInfo.appendChild(entry);
-    scoreBoard.after(entry);
+    scoreContainer.appendChild(entry);
     scoreInfo.style.display = "block";
     form.reset();
 }
@@ -160,9 +159,7 @@ function playAgain(){
 }
 
 function clearScore(){
-    var first = scoreInfo.firstElementChild;
-    while (first) {
-        first.remove();
-        first = scoreInfo.firstElementChild;
-    }
+    while (scoreContainer.hasChildNodes()) {
+        scoreContainer.removeChild(scoreContainer.firstChild);
+      }
 }

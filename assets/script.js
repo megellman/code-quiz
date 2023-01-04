@@ -1,5 +1,5 @@
 var container = $('#quiz-container');
-var btns = $('.questions');
+var btns = $('.quesbtn');
 var question = $('#questions');
 var quizStart = $('#btn-start');
 var quesNum = $('#ques-num');
@@ -11,11 +11,19 @@ var scoreInfo = $('#score-info');
 var roundCounter = 0;
 var finalScore = 0;
 var time = 30;
-var answerKey = [];
 
-
-// Begin Game 
-quizStart.on('click', roundOne);
+var answerKey = {
+    quesOne: "1. function myFunction()",
+    quesTwo: "4. <script></script>",
+    quesThree: "3. If a is true, log 'Hello World' to the console",
+    quesFour: "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value",
+};
+var questions = {
+    quesOne: ["1. function myFunction()", "2. myFunction", "3. myFunction()", "4. function myFunction"],
+    quesTwo: ["1. <link></link>", "2. <a/>", "3. <script/>", "4. <script></script>"],
+    quesThree: ["1. If a is selected, log 'Hello World' to the console", "2. If a is passed, run this function", "3. If a is true, log 'Hello World' to the console", "4. If a is found in the HTML file, log 'Hello World' to the console"],
+    quesFour: ["1. == is truthy and === is not", "2. == asigns a value and === declares that two values are equal", "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value", "4. === declares that two values are equal and == declares that two values are the same primitive type and equal value"]
+}
 
 // Countdown timer
 function countDown() {
@@ -25,61 +33,101 @@ function countDown() {
         if (time < 0) {
             clearInterval(timer);
             calculateScore()
-        } 
+        }
     }, 1000);
 }
 
-var quesOne = ["1. function myFunction()", "2. myFunction", "3. myFunction()", "4. function myFunction"]
-answerKey.push(quesOne[0]);
-function roundOne() {
+function beginGame() {
+    countDown();
     for (var i = 0; i < btns.length; i++) {
-        btns[i].style.visibility = "visible";
-        btns[i].textContent = quesOne[i];
+        btns[i].textContent = questions.quesOne[i];
     }
+    btns.css('visibility', 'visible');
     quizStart.css('display', 'none');
     quesNum.css('visibility', 'visible').text("Question #1");
     question.css('visibility', 'visible').text("How do you declare a function?");
     roundCounter++;
-    countDown();
 }
 
-var quesTwo = ["1. <link></link>", "2. <a/>", "3. <script/>", "4. <script></script>"]
-answerKey.push(quesTwo[3]);
-function roundTwo() {
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].textContent = quesTwo[i];
-    }
-    quesNum.text('Question #2');
-    question.text('How do you insert JavaScript code in an HTML file?');
-    roundCounter++;
-}
+// Begin Game 
+quizStart.on('click', beginGame);
 
-var quesThree = ["1. If a is selected, log 'Hello World' to the console", "2. If a is passed, run this function", "3. If a is true, log 'Hello World' to the console", "4. If a is found in the HTML file, log 'Hello World' to the console"]
-answerKey.push(quesThree[2]);
-function roundThree() {
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].textContent = quesThree[i];
+btns.on('click', function(){
+    checkAnswer();
+    if(roundCounter === 1){
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].textContent = questions.quesTwo[i];
+        }
+        quesNum.text('Question #2');
+        question.text('How do you insert JavaScript code in an HTML file?');
+        roundCounter++;
+    } else if(roundCounter === 2){
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].textContent = questions.quesThree[i];
+        }
+        quesNum.text('Question #3');
+        question.text('Describe the function of this code:\n if(a){\nconsole.log(\'Hello World\')');
+        roundCounter++;
+    } else if(roundCounter === 3){
+        for (var i = 0; i < btns.length; i++) {
+            btns.textContent = questions.quesFour[i];
+        }
+        quesNum.text('Question #4');
+        question.text('What is the difference between == and ===?');
+        roundCounter++;
+    } else if(roundCounter === 4){
+        calculateScore();
     }
-    quesNum.text('Question #3');
-    question.text('Describe the function of this code:\n if(a){\nconsole.log(\'Hello World\')');
-    roundCounter++;
-}
+})
 
-var quesFour = ["1. == is truthy and === is not", "2. == asigns a value and === declares that two values are equal", "3. == declares that two values are equal and === declares that two values are the same primitive type and equal value", "4. === declares that two values are equal and == declares that two values are the same primitive type and equal value"]
-answerKey.push(quesFour[2]);
-function roundFour() {
-    for (var i = 0; i < btns.length; i++) {
-        btns.textContent = quesFour[i];
-    }
-    quesNum.text('Question #4');
-    question.text('What is the difference between == and ===?');
-    roundCounter++;
-}
+
+
+// function roundOne() {
+//     for (var i = 0; i < btns.length; i++) {
+//         btns[i].textContent = questions.quesOne[i];
+//     }
+//     btns.css('visibility', 'visible');
+//     quizStart.css('display', 'none');
+//     quesNum.css('visibility', 'visible').text("Question #1");
+//     question.css('visibility', 'visible').text("How do you declare a function?");
+//     roundCounter++;
+//     countDown();
+// }
+
+
+// function roundTwo() {
+//     for (var i = 0; i < btns.length; i++) {
+//         btns[i].textContent = questions.quesTwo[i];
+//     }
+//     quesNum.text('Question #2');
+//     question.text('How do you insert JavaScript code in an HTML file?');
+//     roundCounter++;
+// }
+
+
+
+// function roundThree() {
+//     for (var i = 0; i < btns.length; i++) {
+//         btns[i].textContent = questions.quesThree[i];
+//     }
+//     quesNum.text('Question #3');
+//     question.text('Describe the function of this code:\n if(a){\nconsole.log(\'Hello World\')');
+//     roundCounter++;
+// }
+
+// function roundFour() {
+//     for (var i = 0; i < btns.length; i++) {
+//         btns.textContent = questions.quesFour[i];
+//     }
+//     quesNum.text('Question #4');
+//     question.text('What is the difference between == and ===?');
+//     roundCounter++;
+// }
 
 // If the content of the button clicked has text content that matches one of these array
 // items, run rightAnswer function. If not, run wrongAnswer function
-function checkAnswer(e) {
-    if (answerKey.includes(btns[e].textContent)) {
+function checkAnswer() {
+    if (answerKey) {
         rightAnswer();
     } else {
         wrongAnswer();
@@ -87,17 +135,17 @@ function checkAnswer(e) {
 }
 
 // Next Round 
-function nextRound() {
-    if (roundCounter === 1) {
-        roundTwo();
-    } else if (roundCounter === 2) {
-        roundThree();
-    } else if (roundCounter === 3) {
-        roundFour();
-    } else if (roundCounter === 4) {
-        calculateScore();
-    }
-}
+// function nextRound() {
+//     if (roundCounter === 1) {
+//         roundTwo();
+//     } else if (roundCounter === 2) {
+//         roundThree();
+//     } else if (roundCounter === 3) {
+//         roundFour();
+//     } else if (roundCounter === 4) {
+//         calculateScore();
+//     }
+// }
 
 //Correct
 function rightAnswer() {
@@ -105,7 +153,6 @@ function rightAnswer() {
     answerMessage.children().first().css('display', 'block');
     setTimeout(cancelMessage, 1000);
     finalScore++;
-    setTimeout(nextRound, 1000);
 }
 
 //Wrong
@@ -113,7 +160,6 @@ function wrongAnswer() {
     answerMessage.css('display', 'block');
     answerMessage.children().last().css('display', 'block');
     setTimeout(cancelMessage, 1000);
-    setTimeout(nextRound, 1000);
     time--;
 }
 

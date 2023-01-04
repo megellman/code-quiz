@@ -1,15 +1,13 @@
-var container = document.querySelector("#quiz-container");
-var btns = document.getElementsByClassName("questions");
-var question = document.querySelector("#questions");
-var quizStart = document.querySelector("#btn-start");
-var quesNum = document.querySelector("#ques-num");
-var answerMessage = document.querySelector("#answer-message");
-var correctMessage = document.querySelector("#correct");
-var wrongMessage = document.querySelector("#wrong");
-var finalScoreMessage = document.querySelector("#final-score");
-var scorePercentage = document.querySelector("#score-percentage");
-var scoreBoard = document.querySelector("#score-board");
-var scoreInfo = document.querySelector("#score-info");
+var container = $('#quiz-container');
+var btns = $('.questions');
+var question = $('#questions');
+var quizStart = $('#btn-start');
+var quesNum = $('#ques-num');
+var answerMessage = $('#answer-message');
+var finalScoreMessage = $('#final-score');
+var scorePercentage = $('#score-percentage');
+var scoreBoard = $('#score-board');
+var scoreInfo = $('#score-info');
 var roundCounter = 0;
 var finalScore = 0;
 var time = 30;
@@ -17,20 +15,17 @@ var answerKey = [];
 
 
 // Begin Game 
-quizStart.addEventListener("click", roundOne);
+quizStart.on('click', roundOne);
 
 // Countdown timer
 function countDown() {
     var timer = setInterval(function () {
-        document.querySelector("#timer").innerHTML = time;
+        $('#timer').text(time);
         time--;
         if (time < 0) {
             clearInterval(timer);
             calculateScore()
-        } else if (roundCounter === 5) {
-            clearInterval(timer);
-            document.querySelector("#timer").innerHTML = 0;
-        }
+        } 
     }, 1000);
 }
 
@@ -41,11 +36,9 @@ function roundOne() {
         btns[i].style.visibility = "visible";
         btns[i].textContent = quesOne[i];
     }
-    quizStart.style.display = "none";
-    quesNum.style.visibility = "visible";
-    quesNum.textContent = "Question #1";
-    question.style.visibility = "visible";
-    question.textContent = "How do you declare a function?";
+    quizStart.css('display', 'none');
+    quesNum.css('visibility', 'visible').text("Question #1");
+    question.css('visibility', 'visible').text("How do you declare a function?");
     roundCounter++;
     countDown();
 }
@@ -56,8 +49,8 @@ function roundTwo() {
     for (var i = 0; i < btns.length; i++) {
         btns[i].textContent = quesTwo[i];
     }
-    quesNum.textContent = "Question #2";
-    question.textContent = "How do you insert JavaScript code in an HTML file?"
+    quesNum.text('Question #2');
+    question.text('How do you insert JavaScript code in an HTML file?');
     roundCounter++;
 }
 
@@ -67,8 +60,8 @@ function roundThree() {
     for (var i = 0; i < btns.length; i++) {
         btns[i].textContent = quesThree[i];
     }
-    quesNum.textContent = "Question #3";
-    question.textContent = "Describe the function of this code:\n if(a){\nconsole.log('Hello World')";
+    quesNum.text('Question #3');
+    question.text('Describe the function of this code:\n if(a){\nconsole.log(\'Hello World\')');
     roundCounter++;
 }
 
@@ -78,8 +71,8 @@ function roundFour() {
     for (var i = 0; i < btns.length; i++) {
         btns.textContent = quesFour[i];
     }
-    quesNum.textContent = "Question #4";
-    question.textContent = "What is the difference between == and ===?"
+    quesNum.text('Question #4');
+    question.text('What is the difference between == and ===?');
     roundCounter++;
 }
 
@@ -108,8 +101,8 @@ function nextRound() {
 
 //Correct
 function rightAnswer() {
-    answerMessage.style.display = "block";
-    correctMessage.style.display = "block";
+    answerMessage.css('display', 'block');
+    answerMessage.children().first().css('display', 'block');
     setTimeout(cancelMessage, 1000);
     finalScore++;
     setTimeout(nextRound, 1000);
@@ -117,32 +110,32 @@ function rightAnswer() {
 
 //Wrong
 function wrongAnswer() {
-    answerMessage.style.display = "block";
-    wrongMessage.style.display = "block";
+    answerMessage.css('display', 'block');
+    answerMessage.children().last().css('display', 'block');
     setTimeout(cancelMessage, 1000);
     setTimeout(nextRound, 1000);
     time--;
 }
 
 function cancelMessage() {
-    answerMessage.style.display = "none";
-    wrongMessage.style.display = "none";
-    correctMessage.style.display = "none";
+    answerMessage.css('display', 'none');
+    answerMessage.children().css('display', 'none');
 }
 
 // Final Score
 var scoreTotal;
 function calculateScore() {
     roundCounter++;
-    finalScoreMessage.style.display = "block";
+    finalScoreMessage.css('display', 'block');
     scoreTotal = (finalScore / 4) * 100;
     scorePercentage.textContent = "Your Score: " + scoreTotal + "%";
 }
 
-var scoreContainer = document.getElementById("score-container");
+//form entry and make sure to prevent default()
+var scoreContainer = $('score-container');
 function getHighScore(form) {
-    finalScoreMessage.style.display = "none";
-    var entry = document.createElement("p");
+    finalScoreMessage.css('display', 'none');
+    var entry = $('<p>');
     var name = `${scoreTotal}    -   ${form.initials.value}`;
     entry.appendChild(document.createTextNode(name));
     scoreContainer.appendChild(entry);
@@ -151,13 +144,14 @@ function getHighScore(form) {
 }
 
 function playAgain() {
-    scoreInfo.style.display = "none";
+    scoreInfo.css('display', 'none');
     time = 30;
     roundCounter = 0;
     finalScore = 0;
     roundOne();
 }
 
+// clear function
 function clearScore() {
     while (scoreContainer.hasChildNodes()) {
         scoreContainer.removeChild(scoreContainer.firstChild);

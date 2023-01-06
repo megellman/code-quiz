@@ -2,12 +2,16 @@
     --dark: rgb(77, 6, 25);
     --medium: rgb(215, 171, 183);
     --light: rgb(232, 217, 221);
-
+    --complementary-dark: #67818A;
+    --complementary-light: #96C6D6;
+    --header: 'Karla', sans-serif;
+    --body: 'Inconsolata', monospace;
 }
 
 body{
     background-image: url(./clouds.jpg);
     color: var(--dark);
+    font-family: var(--body);
 }
 
 h1 {
@@ -15,6 +19,7 @@ h1 {
     margin-bottom: 100px;
     color: white;
     font-size: 70px;
+    font-family: var(--header);
 }
 
 #timer{
@@ -26,7 +31,7 @@ h1 {
 }
 
 #quiz-container {
-    border: var(--dark) 2px solid;
+    border: var(--complementary-dark) 2px solid;
     width: 400px;
     height: 400px;
     position: absolute;
@@ -76,8 +81,14 @@ h1 {
     margin-top: 40px;
 }
 
-h2{
+h2,
+h3{
     text-align: center;
+    font-family: var(--header);
+}
+
+#ques-container{
+    margin-top: 20px;
 }
 
 .quesbtn {
@@ -87,6 +98,16 @@ h2{
     width: 70%;
     text-align: start;
     border-width: 2px;
+    font-family: var(--body);
+    font-weight: 700;
+}
+
+#question{
+    margin-top: 40px;
+}
+
+#ques-num{
+    font-size: 1.8em;
 }
 
 #btn-start{
@@ -97,6 +118,8 @@ h2{
     position: absolute;
     top: 40%;
     right: 29%;
+    background-color: var(--complementary-light);
+    font-family: var(--body);
 }
 
 correct,
@@ -112,13 +135,23 @@ button{
     background-color: white;
 }
 
-button:active{
-    border-width: 2px;
-    box-shadow: -2px 2px 8px var(--dark);
+#final-score button:hover{
+    box-shadow: -4px 4px 10px var(--dark);
 }
 
-h3 {
-    text-align: center;
+#submit-btn{
+    border: 2px solid var(--complementary-dark);
+    background-color: var(--complementary-light);
+    color: white;
+}
+
+#initials{
+    border: 2px solid var(--complementary-dark);
+}
+
+button:active{
+    border-width: 2.6px;
+    box-shadow: -2px 2px 10px var(--dark);
 }
 
 #score-percentage{
@@ -146,8 +179,8 @@ h3 {
 #reset-quiz {
     font-size: 1.5em;
     position: absolute;
-    bottom: 17%;
-    left: 36%;
+    bottom: 1%;
+    left: 34%;
 }
 
 #score-board{

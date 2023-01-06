@@ -171,10 +171,9 @@ function calculateScore() {
 
 submitBtn.click(function(event){
     event.preventDefault();
-    var name = $('<p>').text(scoreTotal + " - " + initials.value);
+    var name = $('<p>').text(scoreTotal + " - " + initials.value).css('font-size', '1.5em');
     $('#score-container').append(name);
     localStorage.setItem(scoreTotal, initials.value);
-    scoreInfo.css('display', 'block');
     initials.value = "";
 })
 

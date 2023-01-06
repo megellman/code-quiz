@@ -1,4 +1,3 @@
-var container = $('#quiz-container');
 var btns = $('.quesbtn');
 var question = $('#question');
 var quizStart = $('#btn-start');
@@ -6,9 +5,9 @@ var quesNum = $('#ques-num');
 var answerMessage = $('#answer-message');
 var finalScoreMessage = $('#final-score');
 var scorePercentage = $('#score-percentage');
-var scoreBoard = $('#score-board');
-var scoreInfo = $('#score-info');
 var submitBtn = $('#submit-btn');
+var quesContainer = $('#ques-container');
+var scoreContainer = $('#score-container');
 var roundCounter = 0;
 var finalScore = 0;
 var time = 30;
@@ -123,9 +122,9 @@ btns.click(function(){
 function nextRound() {
     if(roundCounter < 4){
         for (var i = 0; i < answerKey[0].options.length; i++) {
-            $('#ques-container').children().eq(i).text(answerKey[roundCounter].options[i].text);
-            $('#ques-container').children().eq(i).val(answerKey[roundCounter].options[i].value);
-            console.log(`button ${i} has a value of ${$('#ques-container').children().eq(i).val()}`);
+            quesContainer.children().eq(i).text(answerKey[roundCounter].options[i].text);
+            quesContainer.children().eq(i).val(answerKey[roundCounter].options[i].value);
+            console.log(`button ${i} has a value of ${quesContainer.children().eq(i).val()}`);
         }
         quesNum.css('visibility', 'visible').text(answerKey[roundCounter].number);
         question.css('visibility', 'visible').text(answerKey[roundCounter].question);
@@ -172,14 +171,13 @@ function calculateScore() {
 submitBtn.click(function(event){
     event.preventDefault();
     var name = $('<p>').text(scoreTotal + " - " + initials.value).css('font-size', '1.5em');
-    $('#score-container').append(name);
+    scoreContainer.append(name);
     localStorage.setItem(scoreTotal, initials.value);
     initials.value = "";
 })
 
 
 function playAgain() {
-    scoreInfo.css('display', 'none');
     time = 30;
     roundCounter = 0;
     finalScore = 0;
@@ -189,6 +187,6 @@ function playAgain() {
 
 // clear function
 function clearScore() {
-    $('#score-container').empty();
+    scoreContainer.empty();
     localStorage.clear();
 }

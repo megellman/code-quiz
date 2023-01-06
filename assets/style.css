@@ -166,6 +166,8 @@ button:active{
     background-color: var(--medium);
     height: 10%;
     width: 20%;
+    font-family: var(--body);
+    font-weight: 800;
 }
 
 #play-again{

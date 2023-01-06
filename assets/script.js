@@ -175,6 +175,7 @@ submitBtn.click(function(event){
     $('#score-container').append(name);
     localStorage.setItem(scoreTotal, initials.value);
     scoreInfo.css('display', 'block');
+    initials.value = "";
 })
 
 
@@ -183,12 +184,12 @@ function playAgain() {
     time = 30;
     roundCounter = 0;
     finalScore = 0;
-    roundOne();
+    finalScoreMessage.css('display', 'none');
+    beginGame();
 }
 
 // clear function
 function clearScore() {
-    while (scoreContainer.hasChildNodes()) {
-        scoreContainer.removeChild(scoreContainer.firstChild);
-    }
+    $('#score-container').empty();
+    localStorage.clear();
 }

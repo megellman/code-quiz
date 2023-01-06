@@ -8,6 +8,7 @@ var finalScoreMessage = $('#final-score');
 var scorePercentage = $('#score-percentage');
 var scoreBoard = $('#score-board');
 var scoreInfo = $('#score-info');
+var submitBtn = $('#submit-btn');
 var roundCounter = 0;
 var finalScore = 0;
 var time = 30;
@@ -167,19 +168,15 @@ function calculateScore() {
     scorePercentage.text("Your Score: " + scoreTotal + "%");
 }
 
-//form entry and make sure to prevent default()
-var scoreContainer = $('score-container');
-function getHighScore(e) {
-    e.preventDefault();
-    finalScoreMessage.css('display', 'none');
-    var name = $('<p>');
-    name.text(`${scoreTotal}    -   ${form.initials.value}`);
-    console.log(name);
-    localStorage.setItem('name', name);
-    localStorage.setItem('score', scoreTotal);
-    scoreContainer.append(name);
+
+submitBtn.click(function(event){
+    event.preventDefault();
+    var name = $('<p>').text(scoreTotal + " - " + initials.value);
+    $('#score-container').append(name);
+    localStorage.setItem(scoreTotal, initials.value);
     scoreInfo.css('display', 'block');
-}
+})
+
 
 function playAgain() {
     scoreInfo.css('display', 'none');

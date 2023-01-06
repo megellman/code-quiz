@@ -170,7 +170,7 @@ function calculateScore() {
 
 submitBtn.click(function(event){
     event.preventDefault();
-    var name = $('<p>').text(scoreTotal + " - " + initials.value).css('font-size', '1.5em');
+    var name = $('<p>').text(scoreTotal + "%" + " - " + initials.value).css('font-size', '1.5em');
     scoreContainer.append(name);
     localStorage.setItem(scoreTotal, initials.value);
     initials.value = "";
